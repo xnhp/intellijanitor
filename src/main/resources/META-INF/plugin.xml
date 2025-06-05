@@ -3,6 +3,18 @@
     <id>com.github.xnhp.intellijanitor</id>
     <name>intellijanitor</name>
     <vendor>xnhp</vendor>
+    <depends>com.intellij.modules.platform</depends>
+
+    <resource-bundle>messages.MyBundle</resource-bundle>
+
+    <extensions defaultExtensionNs="com.intellij">
+        <applicationService serviceImplementation="com.github.xnhp.intellijanitor.settings.IntelliJanitorSettingsState"/>
+        <applicationConfigurable parentId="tools" instance="com.github.xnhp.intellijanitor.settings.IntelliJanitorSettingsConfigurable"
+                             id="com.github.xnhp.intellijanitor.settings.IntelliJanitorSettingsConfigurable"
+                             displayName="IntelliJanitor Settings"/>
+        <notificationGroup id="IntelliJanitor Notifications" displayType="BALLOON" toolWindowId="IntelliJanitor"/>
+        <postStartupActivity implementation="com.github.xnhp.intellijanitor.startup.ImlFileListenerRegistration"/>
+    </extensions>
 
     <depends>com.intellij.modules.platform</depends>
 
