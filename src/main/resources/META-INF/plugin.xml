@@ -1,7 +1,7 @@
 <!-- Plugin Configuration File. Read more: https://plugins.jetbrains.com/docs/intellij/plugin-configuration-file.html -->
 <idea-plugin>
     <id>com.github.xnhp.intellijanitor</id>
-    <name>intellijanitor</name>
+    <name>IntelliJanitor</name>
     <vendor>xnhp</vendor>
     <depends>com.intellij.modules.platform</depends>
 
@@ -12,7 +12,8 @@
         <applicationConfigurable parentId="tools" instance="com.github.xnhp.intellijanitor.settings.IntelliJanitorSettingsConfigurable"
                              id="com.github.xnhp.intellijanitor.settings.IntelliJanitorSettingsConfigurable"
                              displayName="IntelliJanitor Settings"/>
-        <notificationGroup id="IntelliJanitor Notifications" displayType="BALLOON" toolWindowId="IntelliJanitor"/>
+        <notificationGroup id="IntelliJanitor Notifications" displayType="BALLOON" toolWindowId="IntelliJanitor"
+                           bundle="messages.MyBundle" key="notification.group.intellijanitor.notifications"/>
         <postStartupActivity implementation="com.github.xnhp.intellijanitor.startup.ImlFileListenerRegistration"/>
     </extensions>
 
@@ -24,4 +25,12 @@
         <toolWindow factoryClass="com.github.xnhp.intellijanitor.toolWindow.MyToolWindowFactory" id="MyToolWindow"/>
         <postStartupActivity implementation="com.github.xnhp.intellijanitor.startup.MyProjectActivity" />
     </extensions>
+
+    <actions>
+        <action id="com.github.xnhp.intellijanitor.actions.ScanModulesForImlFilesAction"
+                class="com.github.xnhp.intellijanitor.actions.ScanModulesForImlFilesAction"
+        >
+            <add-to-group group-id="ToolsMenu" anchor="last"/>
+        </action>
+    </actions>
 </idea-plugin>
